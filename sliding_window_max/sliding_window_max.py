@@ -5,24 +5,19 @@ Returns: a List of integers
 def sliding_window_max(nums, k):
     window = []
     max_values = []
-    start = 0
-    end = start + k
 
-    for i in range(len(nums) + 1):
+    for i in range(len(nums)):
         if len(window) < k:
             window.append(nums[i])
-            if i + 1 < k:
-                i += 1
-            
         
-        elif len(window) == k:
+        else:
             max_val =  max(window)
             max_values.append(max_val)
-            window.pop(start)
-            # i += 1
-            if i in range(len(nums)):
+            window.pop(0)
+            if i < len(nums):
                 window.append(nums[i])
-        
+                
+    max_values.append(max(window))
     return max_values
 
 
